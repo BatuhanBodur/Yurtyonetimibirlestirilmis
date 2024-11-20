@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yurt ve Oda Değişimi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      color: #007BFF;
+    }
+    .tab-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .tab-button {
+      padding: 10px 20px;
+      margin: 0 5px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .tab-button:hover {
+      background-color: #0056b3;
+    }
+    .table-container {
+      width: 90%;
+      margin: 0 auto;
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #007BFF;
+      color: white;
+    }
+    .action-btns {
+      display: flex;
+      justify-content: center;
+    }
+    .action-btn {
+      margin: 5px;
+      padding: 8px 16px;
+      border: none;
+      background-color: #28a745;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .action-btn:hover {
+      background-color: #218838;
+    }
+    .status-pending {
+      color: #FFCC00; /* Sarı renk */
+      font-weight: bold;
+    }
+    .status-approved {
+      color: #28a745; /* Yeşil renk */
+      font-weight: bold;
+    }
+    .status-rejected {
+      color: #dc3545; /* Kırmızı renk */
+      font-weight: bold;
+    }
+    .form-container {
+      margin: 20px auto;
+      width: 80%;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .form-container input, .form-container select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .form-container button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .form-container button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h2>Oda ve Yurt Değişim Talepleri</h2>
+
+  <div class="tab-container">
+    <button class="tab-button" onclick="showRoomChange()">Oda Değişimi</button>
+    <button class="tab-button" onclick="showDormChange()">Yurt Değişimi</button>
+    <button class="tab-button" onclick="showManualRoomChange()">Manuel Oda Değişimi</button>
+  </div>
+
+  <div class="table-container" id="roomChangeTable">
+    <h3>Oda Değişim Talepleri</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Öğrenci 1</th>
+          <th>TC</th>
+          <th>Mevcut Oda</th>
+          <th>Öğrenci 2</th>
+          <th>TC</th>
+          <th>Mevcut Oda</th>
+          <th>Talep Durumu</th>
+          <th>İşlem</th>
+        </tr>
+      </thead>
+      <tbody id="roomChangeData"></tbody>
+    </table>
+  </div>
+
+  <div class="table-container" id="dormChangeTable" style="display: none;">
+    <h3>Yurt Değişim Talepleri</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Öğrenci 1</th>
+          <th>TC</th>
+          <th>Mevcut Yurt</th>
+          <th>Öğrenci 2</th>
+          <th>TC</th>
+          <th>Mevcut Yurt</th>
+          <th>Talep Durumu</th>
+          <th>İşlem</th>
+        </tr>
+      </thead>
+      <tbody id="dormChangeData"></tbody>
+    </table>
+  </div>
+
+  <div class="form-container" id="manualRoomChangeForm" style="display: none;">
+    <h3>Manuel Oda Değişimi</h3>
+    <label for="studentName">Öğrenci Adı</label>
+    <input type="text" id="studentName" placeholder="Öğrenci Adı">
+    <label for="studentSurname">Öğrenci Soyadı</label>
+    <input type="text" id="studentSurname" placeholder="Öğrenci Soyadı">
+    <label for="currentRoom">Mevcut Oda</label>
+    <input type="text" id="currentRoom" placeholder="Mevcut Oda">
+    <label for="newRoom">Boş Odalar</label>
+    <select id="newRoom">
+      <option value="101">101</option>
+      <option value="102">113</option>
+      <option value="103">143</option>
+      <option value="104">165</option>
+      <option value="105">215</option>
+    </select>
+    <button onclick="submitRoomChange()">Değiştir</button>
+  </div>
+
+  <script>
+    const students1 = [
+      { tc: "12345678901", name: "Osman", surname: "Altan", currentRoom: "101", currentDorm: "YURT A" },
+      { tc: "22345678901", name: "Ali", surname: "Yılmaz", currentRoom: "102", currentDorm: "YURT A" },
+      { tc: "32345678901", name: "Mehmet", surname: "Çelik", currentRoom: "103", currentDorm: "YURT A" },
+    ];
+
+    const students2 = [
+      { tc: "42345678901", name: "Can", surname: "Öztürk", currentRoom: "104", currentDorm: "YURT D" },
+      { tc: "52345678901", name: "Yusuf", surname: "Kara", currentRoom: "105", currentDorm: "YURT E" },
+      { tc: "62345678901", name: "Okan", surname: "Uçar", currentRoom: "106", currentDorm: "YURT F" },
+    ];
+
+    const roomChangeRequests = [];
+    const dormChangeRequests = [];
+
+    function generateRequests() {
+      students1.forEach((s1, index) => {
+        const s2 = students2[index];
+        if (s1 && s2) {
+          roomChangeRequests.push({ student1: s1, student2: s2, status: "Bekliyor" });
+          dormChangeRequests.push({ student1: s1, student2: s2, status: "Bekliyor" });
+        }
+      });
+      renderTables();
+    }
+
+    function getStatusClass(status) {
+      return {
+        "Bekliyor": "status-pending",
+        "Onaylandı": "status-approved",
+        "Reddedildi": "status-rejected",
+      }[status] || "";
+    }
+
+    function renderTables() {
+      const roomChangeTable = document.getElementById("roomChangeData");
+      roomChangeTable.innerHTML = roomChangeRequests.map(req => `
+        <tr>
+          <td>${req.student1.name} ${req.student1.surname}</td>
+          <td>${req.student1.tc}</td>
+          <td>${req.student1.currentRoom}</td>
+          <td>${req.student2.name} ${req.student2.surname}</td>
+          <td>${req.student2.tc}</td>
+          <td>${req.student2.currentRoom}</td>
+          <td class="${getStatusClass(req.status)}">${req.status}</td>
+          <td class="action-btns">
+            <button class="action-btn" onclick="approveRequest('room', ${roomChangeRequests.indexOf(req)})">Onayla</button>
+            <button class="action-btn" onclick="rejectRequest('room', ${roomChangeRequests.indexOf(req)})">Reddet</button>
+          </td>
+        </tr>
+      `).join("");
+
+      const dormChangeTable = document.getElementById("dormChangeData");
+      dormChangeTable.innerHTML = dormChangeRequests.map(req => `
+        <tr>
+          <td>${req.student1.name} ${req.student1.surname}</td>
+          <td>${req.student1.tc}</td>
+          <td>${req.student1.currentDorm}</td>
+          <td>${req.student2.name} ${req.student2.surname}</td>
+          <td>${req.student2.tc}</td>
+          <td>${req.student2.currentDorm}</td>
+          <td class="${getStatusClass(req.status)}">${req.status}</td>
+          <td class="action-btns">
+            <button class="action-btn" onclick="approveRequest('dorm', ${dormChangeRequests.indexOf(req)})">Onayla</button>
+            <button class="action-btn" onclick="rejectRequest('dorm', ${dormChangeRequests.indexOf(req)})">Reddet</button>
+          </td>
+        </tr>
+      `).join("");
+    }
+
+    function approveRequest(type, index) {
+      const requests = type === 'room' ? roomChangeRequests : dormChangeRequests;
+      requests[index].status = "Onaylandı";
+      renderTables();
+    }
+
+    function rejectRequest(type, index) {
+      const requests = type === 'room' ? roomChangeRequests : dormChangeRequests;
+      requests[index].status = "Reddedildi";
+      renderTables();
+    }
+
+    function showDormChange() {
+      document.getElementById("roomChangeTable").style.display = "none";
+      document.getElementById("dormChangeTable").style.display = "block";
+      document.getElementById("manualRoomChangeForm").style.display = "none";
+    }
+
+    function showRoomChange() {
+      document.getElementById("roomChangeTable").style.display = "block";
+      document.getElementById("dormChangeTable").style.display = "none";
+      document.getElementById("manualRoomChangeForm").style.display = "none";
+    }
+
+    function showManualRoomChange() {
+      document.getElementById("manualRoomChangeForm").style.display = "block";
+      document.getElementById("roomChangeTable").style.display = "none";
+      document.getElementById("dormChangeTable").style.display = "none";
+    }
+
+    function submitRoomChange() {
+      const studentName = document.getElementById("studentName").value;
+      const studentSurname = document.getElementById("studentSurname").value;
+      const currentRoom = document.getElementById("currentRoom").value;
+      const newRoom = document.getElementById("newRoom").value;
+
+      // Do something with this data, like updating the database or showing confirmation
+      alert(`Oda Değişimi Başarıyla Yapıldı: ${studentName} ${studentSurname} (${currentRoom} -> ${newRoom})`);
+    }
+
+    generateRequests();
+  </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yurt Yönetimi ile İletişim</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: white;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 500%;
+            max-width: 1200px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 32px;
+            background-color: #007bff; /* Mavi arka plan */
+            color: white; /* Beyaz yazı rengi */
+            padding: 10px; /* Padding ekledik */
+            border-radius: 5px; /* Kenarları yuvarladık */
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        .btn-primary {
+            width: 100%;
+            font-size: 20px;
+            padding: 12px;
+        }
+        label {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Yurt Yönetimi ile İletişim</h2>
+
+        <!-- Tarih Bilgisi -->
+        <div class="form-group">
+            <label for="tarih">Tarih</label>
+            <input type="date" id="tarih" class="form-control">
+        </div>
+
+        <!-- Sorun Seçimi -->
+        <div class="form-group">
+            <label for="sorun">Sorun</label>
+            <select id="sorun" class="form-control">
+                <option value="temizlik">Temizlik</option>
+                <option value="internet">İnternet</option>
+                <option value="yemek">Yemek</option>
+                <option value="ısınma">Isınma</option>
+                <option value="diğer">Diğer</option>
+            </select>
+        </div>
+
+        <!-- Açıklama Alanı -->
+        <div class="form-group">
+            <label for="aciklama">Açıklama</label>
+            <textarea id="aciklama" rows="8" class="form-control" placeholder="Sorununuzu burada açıklayın..."></textarea>
+        </div>
+
+        <!-- Gönder Butonu -->
+        <button type="submit" class="btn btn-primary">Gönder</button>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    @* <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script> *@
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

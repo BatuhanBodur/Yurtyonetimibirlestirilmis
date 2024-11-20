@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İzin Talep Et</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Sayfa tamamını kapsayacak şekilde dikeyde ortalama */
+        body, html {
+            height: 100%; /* Sayfa yüksekliği tam olarak 100% olmalı */
+            margin: 0; /* Sayfa kenar boşluklarını sıfırlıyoruz */
+            display: flex;
+            flex-direction: column; /* Flex yönünü dikey yapıyoruz */
+            justify-content: center; /* Dikeyde ortalama */
+        }
+        .container {
+            max-width: 600px;
+            width: 100%; /* Container genişliğini %100 yapalım */
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        h2 {
+            margin-top: -30px; /* Başlığı biraz daha yukarı almak için margin-top ekledik */
+            background-color: #007bff; /* Mavi arka plan */
+            color: white; /* Yazı rengini beyaz yapalım */
+            padding: 10px; /* Başlık etrafında biraz boşluk bırakalım */
+            border-radius: 5px; /* Köşeleri yuvarlayalım */
+            text-align: center; /* Başlığı ortalayalım */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>İzin Talep Et</h2>
+        <form>
+            <!-- İsim Soyisim Butonu -->
+            <div class="form-group">
+                <label for="isimSoyisim">İsim Soyisim</label>
+                <input type="text" class="form-control" id="isimSoyisim" name="isimSoyisim" placeholder="Adınızı ve Soyadınızı girin">
+            </div>
+
+            <!-- Adres Butonu -->
+            <div class="form-group">
+                <label for="adres">Adres</label>
+                <input type="text" class="form-control" id="adres" name="adres" placeholder="Adresinizi girin">
+            </div>
+
+            <!-- Çıkış Tarihi Butonu -->
+            <div class="form-group">
+                <label for="cikisTarihi">Çıkış Tarihi</label>
+                <input type="date" class="form-control" id="cikisTarihi" name="cikisTarihi">
+            </div>
+
+            <!-- Dönüş Tarihi Butonu -->
+            <div class="form-group">
+                <label for="donusTarihi">Dönüş Tarihi</label>
+                <input type="date" class="form-control" id="donusTarihi" name="donusTarihi">
+            </div>
+
+            <!-- Açıklama Butonu (Textarea) -->
+            <div class="form-group">
+                <label for="aciklama">Açıklama</label>
+                <textarea class="form-control" id="aciklama" name="aciklama" rows="4" placeholder="Talebiniz ile ilgili açıklama yapın (150 karakterle sınırlı)"></textarea>
+            </div>
+
+            <!-- Submit Butonu -->
+            <button type="submit" class="btn btn-primary btn-block">İzin Talep Et</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    @* <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script> *@
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

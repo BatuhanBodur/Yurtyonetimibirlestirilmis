@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misafir Öğrenci Yönetim Sistemi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        h1 {
+            color: #0066cc;
+            margin-bottom: 20px;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 80%;
+            max-width: 800px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Misafir Öğrenci İşlemleri</h1>
+    <div class="container">
+        <!-- Ödeme Hesaplama Bölümü -->
+        <div class="section">
+            <h2>Misafir Öğrenci Ödeme Hesaplama</h2>
+            <label for="guestName">Ad</label>
+            <input type="text" id="guestName" placeholder="Öğrenci adı girin" required>
+
+            <label for="guestSurname">Soyad</label>
+            <input type="text" id="guestSurname" placeholder="Öğrenci soyadı girin" required>
+
+            <label for="guestTC">TC Kimlik Numarası</label>
+            <input type="text" id="guestTC" placeholder="TC kimlik numarası girin" maxlength="11" required>
+
+            <label for="phoneNumber">Telefon Numarası</label>
+            <input type="text" id="phoneNumber" placeholder="Telefon numarası girin" required>
+
+            <label for="entryDate">Giriş Tarihi</label>
+            <input type="date" id="entryDate" required>
+
+            <label for="exitDate">Çıkış Tarihi</label>
+            <input type="date" id="exitDate" required>
+
+            <label for="unitPrice">Günlük Ücret (₺)</label>
+            <input type="number" id="unitPrice" placeholder="Günlük ücret girin" required>
+
+            <button id="calculatePayment">Ödemeyi Hesapla</button>
+
+            <div class="result" id="paymentResult" style="display: none;">
+                <p><strong>Ad Soyad:</strong> <span id="resultFullName"></span></p>
+                <p><strong>TC Kimlik:</strong> <span id="resultTC"></span></p>
+                <p><strong>Telefon:</strong> <span id="resultPhoneNumber"></span></p>
+                <p><strong>Kalınan Gün:</strong> <span id="daysStayed"></span> gün</p>
+                <p><strong>Toplam Ödeme:</strong> <span id="totalPayment"></span> ₺</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+   

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yurt Giderleri</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        h1 {
+            text-align: center;
+            font-size: 48px;  /* Başlık boyutunu büyütme */
+            color: white;
+            padding: 20px;
+            margin: 0;
+            background-color: #0066cc;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .dual-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .container {
+            background: #fff;
+            padding: 20px 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 48%;  /* Her bir container için %48 genişlik */
+            box-sizing: border-box;  /* Box modelini düzgün tutmak için */
+            min-height: 400px;  /* Her iki tablonun minimum yüksekliğini eşit yapmak için */
+        }
+        h2 {
+            text-align: center;
+            padding: 10px;
+            color: white;
+            border-radius: 5px;
+            background-color: #0066cc;
+            margin: 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        button {
+            font-size: 16px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+        }
+        .gider-listesi {
+            margin-top: 20px;
+        }
+        .gider-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .total {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .gecmis-aylar {
+            margin-top: 40px;
+        }
+        .ay-gider {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Yurt Giderleri</h1>
+    
+    <!-- Yanyana tablolara yerleştirilmiş içerik -->
+    <div class="dual-container">
+        <!-- Geçmiş Ayların Giderlerini Gösterme -->
+        <div class="container gecmis-aylar">
+            <h2>Geçmiş Aylık Giderler</h2>
+            <div id="gecmisAylikGiderler"></div>
+        </div>
+
+        <!-- Gider Ekleme Formu -->
+        <div class="container">
+            <h2>Mevcut Ayın Giderlerini Girin</h2>
+            <div class="form-group">
+                <label for="giderTuru">Gider Türü</label>
+                <select id="giderTuru">
+                    <option value="su">Su</option>
+                    <option value="elektrik">Elektrik</option>
+                    <option value="yemek">Yemek</option>
+                    <option value="temizlik">Temizlik</option>
+                    <option value="internet">İnternet</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="giderTutar">Gider Tutarı (₺)</label>
+                <input type="number" id="giderTutar" placeholder="Gider tutarını girin" required>
+            </div>
+            <button type="button" id="ekleButton">Gideri Ekle</button>
+
+            <div class="total" id="toplamGider">Toplam Gider: ₺0.00</div>
+        </div>
+    </div>
+
+    <script>
+        // Geçmiş aylar için örnek gider verisi
+        let giderVerisi = {
+            "Ocak": {
+                "su": 300,
+                "elektrik": 500,
+                "yemek": 1500
+            },
+            "Şubat": {
+                "su": 250,
+                "elektrik": 450,
+                "yemek": 1300
+            },
+            "Mart": {
+                "su": 400,
+                "elektrik": 550,
+                "temizlik": 300
+            }
+        };
+
+        let toplamGider = 0;
+        let mevcutAy = new Date().toLocaleString('default', { month: 'long' });
+
+        // Geçmiş aylardaki giderleri gösterme
+        function showGecmisAylikGiderler() {
+            const gecmisAylikGiderlerDiv = document.getElementById("gecmisAylikGiderler");
+            gecmisAylikGiderlerDiv.innerHTML = "";
+            
+            for (const ay in giderVerisi) {
+                let ayGiderToplam = 0;
+                const ayDiv = document.createElement("div");
+                ayDiv.classList.add("ay-gider");
+                ayDiv.innerHTML = `<strong>${ay}</strong>: `;
+
+                for (const giderTuru in giderVerisi[ay]) {
+                    ayGiderToplam += giderVerisi[ay][giderTuru];
+                    ayDiv.innerHTML += `<br> - ${giderTuru.charAt(0).toUpperCase() + giderTuru.slice(1)}: ₺${giderVerisi[ay][giderTuru].toFixed(2)}`;
+                }
+
+                ayDiv.innerHTML += `<br><strong>Total: ₺${ayGiderToplam.toFixed(2)}</strong>`;
+                gecmisAylikGiderlerDiv.appendChild(ayDiv);
+            }
+        }
+
+        // Mevcut ayın giderlerini girmeye başla
+        let giderListesi = [];
+        let giderTurleri = ["su", "elektrik", "yemek", "temizlik", "internet"];
+        let currentGiderIndex = 0;  // Başlangıçta "su" gideri
+
+        function ekleGider() {
+            const giderTuru = giderTurleri[currentGiderIndex];
+            const giderTutar = parseFloat(document.getElementById("giderTutar").value);
+
+            if (isNaN(giderTutar) || giderTutar <= 0) {
+                return;  // Geri bildirim yok
+            }
+
+            // Gideri ekle
+            if (!giderVerisi[mevcutAy]) {
+                giderVerisi[mevcutAy] = {};  // Eğer mevcut ayda giderler yoksa, yeni bir nesne oluştur
+            }
+
+            giderVerisi[mevcutAy][giderTuru] = giderTutar;
+
+            // Toplam gideri güncelle
+            toplamGider += giderTutar;
+            document.getElementById("toplamGider").innerText = `Toplam Gider: ₺${toplamGider.toFixed(2)}`;
+
+            // Formu sıfırla
+            document.getElementById("giderTutar").value = "";
+
+            // Bir sonraki gider türüne geç
+            currentGiderIndex = (currentGiderIndex + 1) % giderTurleri.length;
+
+            // Eğer tüm gider türleri girildiyse, işlem tamamlandı
+            if (currentGiderIndex === 0) {
+                // Bittiğinde herhangi bir geri bildirim yapmıyoruz
+            }
+        }
+
+        // Buton olaylarını bağlama
+        document.getElementById("ekleButton").addEventListener("click", ekleGider);
+
+        // Geçmiş giderleri göster
+        showGecmisAylikGiderler();
+    </script>
+</body>
+</html>

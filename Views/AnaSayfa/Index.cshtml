@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="~/css/anasayfa.css" rel="stylesheet" />
+    <style>
+        .container-center {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar-->
+        <div class="border-end bg-white" id="sidebar-wrapper">
+            <div class="sidebar-heading border-bottom bg-light">Yurt Yönetim Sistemi</div>
+            <div class="list-group list-group-flush">
+            
+            @if (ViewBag.UserRole == "Admin")
+            {
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-controller="DuyuruYayinla" asp-action="Duyurular">Duyuru Yayınla</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-controller="OdaDegisimi" asp-action="Degisim">Oda Değişimi Onayı</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-controller="OdaBilgileri" asp-action="Bilgi">Oda Bilgileri</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-controller="OdemeDurumu" asp-action="Odeme">Ödemeler</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-controller="YurtGiderleri" asp-action="Gider">Yurt Giderleri</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-controller="GuvenlikPersonel" asp-action="Personel">Güvenlik Personel Bilgileri</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-controller="KursAcma" asp-action="Kurs">Kurs Açma</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-controller="MisafirOgrenci" asp-action="Misafir">Misafir Öğrenci</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-controller="OdaAtama" asp-action="Atama">Odalara Atama Yapma</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-controller="OgrenciDevamsizlik" asp-action="Devamsizlik">Öğrenci Devamsızlık</a>
+            } else
+            {
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-controller="DanismanTakvimi" asp-action="Danisman">Danışman Takvimi Gör</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-controller="IzinBilgileri" asp-action="Izin">İzin Bilgilerini Gör</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-controller="IzinTalep" asp-action="Izin">İzin Talep Et</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-controller="OdaDegisikligi" asp-action="Oda">Oda Değişikliği Başvurusu</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-controller="OdemeYap" asp-action="Odeme">Ödeme Yap</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-controller="SporRezervasyon" asp-action="Rezervasyon">Spor Tesisi Rezervasyonu</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-controller="YemekListesi" asp-action="Yemek">Yemek Listesini Gör</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-controller="YurtDegisimi" asp-action="Degisim">Yurt Değişimi Başvurusu</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-controller="YurtIletisim" asp-action="Iletisim">Yurt Yönetimi ile İletişim</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-controller="DanismanTakvimiDuzenle" asp-action="DanismanTakvim">Danışman Takvimi Düzenle</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-controller="OgrenciProfili" asp-action="Profil">Öğrenci Profili</a>
+            <a class="list-group-item list-group-item-action list-group-item-light p-3" asp-controller="Destek" asp-action="Supported">Destek</a>
+            }
+
+</div>
+
+        </div>
+        <!-- Page content wrapper-->
+        <div id="page-content-wrapper">
+            <!-- Top navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <div class="container-fluid">
+                    <button class="btn btn-primary" id="sidebarToggle">Menu</button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profil</a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#!">Bilgilerim</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#!">Çıkış</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Page content-->
+            <div class="container-center">
+                <h1 class="mt-4">DUYURULAR</h1>
+                <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
+                <p>
+                    Make sure to keep all page content within the
+                    <code>#page-content-wrapper</code>.
+                    The top navbar is optional, and just for demonstration. Just create an element with the
+                    <code>#sidebarToggle</code>
+                    ID which will toggle the menu when clicked.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', event => {
+            // Toggle the side navigation
+            const sidebarToggle = document.body.querySelector('#sidebarToggle');
+            if (sidebarToggle) {
+                // Uncomment Below to persist sidebar toggle between refreshes
+                // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
+                //     document.body.classList.toggle('sb-sidenav-toggled');
+                // }
+                sidebarToggle.addEventListener('click', event => {
+                    event.preventDefault();
+                    document.body.classList.toggle('sb-sidenav-toggled');
+                    localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+                });
+            }
+        });
+    </script>
+</body>
+</html>

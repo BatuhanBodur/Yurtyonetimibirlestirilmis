@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Sayfası</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #6a11cb, #2575fc);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-container {
+            background: white;
+            color: #333;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+        }
+        .login-container h2 {
+            margin-bottom: 40px;
+            font-weight: bold;
+            font-size: 32px;
+        }
+        .btn-login {
+            font-size: 20px;
+            padding: 12px 30px;
+            background: #2575fc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+            width: 100%;
+        }
+        .btn-login:hover {
+            background: #1a5fb6;
+        }
+        .form-control {
+            font-size: 18px;
+            padding: 15px;
+            margin-bottom: 25px;
+            height: 50px;
+        }
+        .footer-text {
+            margin-top: 30px;
+            font-size: 16px;
+            color: #666;
+        }
+        .footer-text a {
+            color: #2575fc;
+            text-decoration: none;
+        }
+        .footer-text a:hover {
+            text-decoration: underline;
+        }
+        .error-message {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+        <div class="login-container">
+        <h2>Giriş Yap</h2>
+
+        <!-- Hata mesajını göster -> Bu rengi kırmızı YAP -->
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="error-message">@ViewBag.ErrorMessage</div>
+        }
+
+        <!-- Action kısmını CheckUsers olarak belirtiyoruz -->
+        <form action="/GirisEkrani/CheckUsers" method="post">
+            <div class="form-group">
+                <input type="text" id="username" name="username" class="form-control" placeholder="TC Kimlik No" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" name="password" class="form-control" placeholder="Şifre" required>
+            </div>
+            <button type="submit" class="btn btn-login">Giriş Yap</button>
+        </form>
+        <div class="footer-text">
+            Şifrenizi mi unuttunuz? <a href="#">Buraya Tıklayın</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

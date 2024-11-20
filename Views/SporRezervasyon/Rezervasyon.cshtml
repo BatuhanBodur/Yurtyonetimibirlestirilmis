@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spor Tesisi Rezervasyonu</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Sayfa tamamını kapsayacak şekilde dikeyde ortalama */
+        body, html {
+            height: 100%; /* Sayfa yüksekliği tam olarak 100% olmalı */
+            margin: 0; /* Sayfa kenar boşluklarını sıfırlıyoruz */
+            display: flex;
+            flex-direction: column; /* Flex yönünü dikey yapıyoruz */
+            justify-content: center; /* Dikeyde ortalama */
+            align-items: center; /* Yatayda ortalama */
+        }
+        .container {
+            max-width: 1000px; /* Container genişliğini 1000px ile sınırlıyoruz */
+            width: 100%; /* Container genişliğini %100 yapalım */
+            margin-top: -50px; /* Başlık yukarı kaydırılacak */
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        h2 {
+            background-color: #007bff; /* Mavi arka plan */
+            color: white; /* Beyaz yazı rengi */
+            padding: 10px; /* Yazının etrafına padding */
+            margin-top: -50px; /* Başlığı biraz daha yukarı almak için margin-top ekledik */
+        }
+        .table th, .table td {
+            text-align: center;
+        }
+        .status-empty {
+            background-color: #28a745; /* Boş saatler için yeşil */
+            color: white;
+        }
+        .status-booked {
+            background-color: #dc3545; /* Dolu saatler için kırmızı */
+            color: white;
+        }
+        .table-container {
+            overflow-x: auto; /* Tablonun taşmaması için yatay kaydırma ekledik */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="text-center">Spor Tesisi Rezervasyonu</h2>
+
+        <!-- Spor Tesisi Seçimi -->
+        <div class="form-group">
+            <label for="sporTesisleri">Spor Tesisi Seçin</label>
+            <select class="form-control" id="sporTesisleri">
+                <option value="futbol">Futbol Sahası</option>
+                <option value="basketbol">Basketbol Sahası</option>
+                <option value="tenis">Masa Tenisi</option>
+            </select>
+        </div>
+
+        <!-- Rezervasyon Tablosu -->
+        <h4 class="text-center">Tarih ve Saat Seçimi</h4>
+        <div class="table-container">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Tarih</th>
+                        <th scope="col">09:00</th>
+                        <th scope="col">10:00</th>
+                        <th scope="col">11:00</th>
+                        <th scope="col">12:00</th>
+                        <th scope="col">13:00</th>
+                        <th scope="col">14:00</th>
+                        <th scope="col">15:00</th>
+                        <th scope="col">16:00</th>
+                        <th scope="col">17:00</th>
+                        <th scope="col">18:00</th>
+                        <th scope="col">19:00</th>
+                        <th scope="col">20:00</th>
+                        <th scope="col">21:00</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">15/11/2024</th>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-booked">Dolu</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-booked">Dolu</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-booked">Dolu</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-empty">Boş</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">16/11/2024</th>
+                        <td class="status-booked">Dolu</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-booked">Dolu</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-booked">Dolu</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-empty">Boş</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">17/11/2024</th>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-booked">Dolu</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-booked">Dolu</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-booked">Dolu</td>
+                        <td class="status-empty">Boş</td>
+                        <td class="status-empty">Boş</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    @* <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script> *@
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

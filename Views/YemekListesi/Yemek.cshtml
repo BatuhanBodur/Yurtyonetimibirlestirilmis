@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haftalık Yemek Listesi</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            max-width: 900px;
+            width: 100%;
+            padding: 20px;
+            background-color: #007bff; /* Arka planı mavi yaptık */
+            color: white; /* Yazı rengini beyaz yaptık, böylece okunabilir olur */
+            border-radius: 10px; /* Köşeleri yuvarlak yapıyoruz */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hafif gölge ekliyoruz */
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        table th, table td {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+        }
+        /* Tablo başlıkları */
+        th {
+            background-color: #0056b3; /* Başlıkları daha koyu mavi yapıyoruz */
+            color: white;
+        }
+        /* Tablo hücre renkleri */
+        td {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Haftalık Yemek Listesi</h2>
+
+        <!-- Yemek Listesi Tablosu -->
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Tarih</th>
+                    <th scope="col">Başlangıç</th>
+                    <th scope="col">Ana Yemek</th>
+                    <th scope="col">Tatlı</th>
+                    <th scope="col">İçecek</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 15 Kasım 2024 -->
+                <tr>
+                    <td>15/11/2024</td>
+                    <td>Mercimek Çorbası</td>
+                    <td>Tavuk Şiş</td>
+                    <td>Künefe</td>
+                    <td>Ayran</td>
+                </tr>
+                <!-- 16 Kasım 2024 -->
+                <tr>
+                    <td>16/11/2024</td>
+                    <td>Ezogelin Çorbası</td>
+                    <td>İskender</td>
+                    <td>Sütlaç</td>
+                    <td>Şalgam</td>
+                </tr>
+                <!-- 17 Kasım 2024 -->
+                <tr>
+                    <td>17/11/2024</td>
+                    <td>Tarator</td>
+                    <td>Köfte & Pirinç Pilavı</td>
+                    <td>Baklava</td>
+                    <td>Fanta</td>
+                </tr>
+                <!-- 18 Kasım 2024 -->
+                <tr>
+                    <td>18/11/2024</td>
+                    <td>Yayla Çorbası</td>
+                    <td>Etli Ekmek</td>
+                    <td>Kazandibi</td>
+                    <td>Su</td>
+                </tr>
+                <!-- 19 Kasım 2024 -->
+                <tr>
+                    <td>19/11/2024</td>
+                    <td>Mercimek Çorbası</td>
+                    <td>Kumpir</td>
+                    <td>Kadayıf</td>
+                    <td>Limonata</td>
+                </tr>
+                <!-- 20 Kasım 2024 -->
+                <tr>
+                    <td>20/11/2024</td>
+                    <td>Tarator</td>
+                    <td>Fırında Tavuk</td>
+                    <td>Tavuk Göğsü</td>
+                    <td>Meyve Suyu</td>
+                </tr>
+                <!-- 21 Kasım 2024 -->
+                <tr>
+                    <td>21/11/2024</td>
+                    <td>Ezogelin Çorbası</td>
+                    <td>Döner</td>
+                    <td>Profiterol</td>
+                    <td>Soda</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    @* <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script> *@
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

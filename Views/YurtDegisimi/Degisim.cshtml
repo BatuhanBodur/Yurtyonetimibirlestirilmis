@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yurt Değişikliği Başvurusu</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+        .form-section, .table-section {
+            padding: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .equal-height {
+            display: flex;
+            gap: 20px;
+        }
+        .equal-height > div {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        h2, .form-section h4, .table-section h4 {
+            background-color: #007bff; /* Blue background */
+            color: white; /* White text color */
+            padding: 10px;
+            border-radius: 5px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .btn-create {
+            font-size: 16px;
+            padding: 8px 20px;
+            margin-top: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .custom-dropdown {
+            position: relative;
+        }
+        .custom-dropdown .dropdown-menu {
+            width: 100%;
+        }
+        .sub-dropdown {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Yurt Değişikliği Başvurusu</h2>
+
+        <div class="equal-height">
+            <!-- Form Bölümü -->
+            <div class="form-section">
+                <h4>Yurt Değişikliği Formu</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="name-surname">İsim Soyisim</label>
+                        <input type="text" id="name-surname" class="form-control" placeholder="İsminiz ve Soyisminiz" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="current-dorm">Kaldığınız Yurt Adı</label>
+                        <input type="text" id="current-dorm" class="form-control" placeholder="Yurt adı" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="current-dorm">Geçmek İstediğiniz Yurt Adı</label>
+                        <input type="text" id="current-dorm" class="form-control" placeholder="Yurt adı" required>
+                        <div class="dropdown-menu" id="desired-dorm-options">
+                            <a class="dropdown-item" href="#">Yurt A</a>
+                            <a class="dropdown-item" href="#">Yurt B</a>
+                            <a class="dropdown-item" href="#">Yurt C</a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Açıklama</label>
+                        <textarea id="description" rows="5" class="form-control" placeholder="Yurt değişikliği nedenini açıklayın..." required></textarea>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Diğer Öğrenciler Tablosu -->
+            <div class="table-section">
+                <h4>Diğer Yurt Değişikliği Başvurusu Yapan Öğrenciler</h4>
+                <table class="table table-bordered text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col">İsim Soyisim</th>
+                            <th scope="col">Kaldığı Yurt</th>
+                            <th scope="col">Geçmek İstediği Yurt</th>
+                            <th scope="col">Değiş</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ahmet Yılmaz</td>
+                            <td>Yurt A</td>
+                            <td>Yurt B</td>
+                            <td><button class="btn btn-primary btn-swap">Değiş</button></td>
+                        </tr>
+                        <tr>
+                            <td>Mehmet Çelik</td>
+                            <td>Yurt B</td>
+                            <td>Yurt A</td>
+                            <td><button class="btn btn-primary btn-swap">Değiş</button></td>
+                        </tr>
+                        <tr>
+                            <td>Ali Kaya</td>
+                            <td>Yurt C</td>
+                            <td>Yurt B</td>
+                            <td><button class="btn btn-primary btn-swap">Değiş</button></td>
+                        </tr>
+                        <tr>
+                            <td>Mustafa Demir</td>
+                            <td>Yurt A</td>
+                            <td>Yurt C</td>
+                            <td><button class="btn btn-primary btn-swap">Değiş</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Gönder Butonu -->
+        <button type="button" class="btn btn-success btn-create">Oluştur</button>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    @* <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script> *@
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

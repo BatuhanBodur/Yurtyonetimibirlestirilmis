@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danışman Takvimi</title>
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Danışman Takvimi</h1>
+    <div id="calendar"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth', // Takvim başlangıç görünümü
+            events: [
+                {
+                    title: 'Öğrenci Görüşmesi',
+                    start: '2024-11-20T10:00:00',
+                    end: '2024-11-20T11:00:00',
+                    description: 'Danışman ile öğrenci görüşmesi',
+                    backgroundColor: '#4CAF50',
+                    borderColor: '#388E3C'
+                },
+                {
+                    title: 'Öğrenci Görüşmesi',
+                    start: '2024-11-21T14:00:00',
+                    end: '2024-11-21T15:00:00',
+                    description: 'Danışman ile öğrenci görüşmesi',
+                    backgroundColor: '#FF9800',
+                    borderColor: '#F57C00'
+                }
+            ],
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,dayGridWeek,dayGridDay'
+            },
+            editable: true, // Etkinlikleri düzenleme imkanı
+            droppable: true // Etkinlikleri sürükleyip bırakma
+        });
+
+        calendar.render();
+    });
+</script>
+
+</body>
+</html>

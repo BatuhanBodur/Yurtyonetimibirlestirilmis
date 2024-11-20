@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destek Sayfası</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100vh; /* Sayfa boyutunu tamamen kapsar */
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            color: #333;
+            display: flex; /* Flexbox ile ortalamayı yapıyoruz */
+            justify-content: center; /* Yatayda ortalar */
+            align-items: center; /* Dikeyde ortalar */
+        }
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background-color: #2575fc; /* Arka plan rengini mavi yapıyoruz */
+            padding: 40px;
+            border-radius: 15px;
+        }
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 30px;
+            font-weight: bold;
+            color: white;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .support-button {
+            font-size: 18px;
+            padding: 12px 30px;
+            background: white;
+            color: #2575fc;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        .support-button:hover {
+            background: #1a5fb6;
+        }
+        .faq-section {
+            margin-top: 50px;
+        }
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        .faq-item h5 {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+        }
+        .faq-item p {
+            font-size: 16px;
+            color: #f0f4f8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="section-title text-center">Destek Alın</h2>
+
+        <!-- Destek Talep Formu -->
+        <div class="row">
+            <div class="col-md-6">
+                <h4 class="section-title">Bize Ulaşın</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="name" style="color: white;">Adınız</label>
+                        <input type="text" id="name" class="form-control" placeholder="Adınız" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" style="color: white;">E-posta</label>
+                        <input type="email" id="email" class="form-control" placeholder="E-posta adresiniz" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="issue" style="color: white;">Sorununuz</label>
+                        <textarea id="issue" rows="4" class="form-control" placeholder="Sorununuzu detaylı şekilde açıklayın" required></textarea>
+                    </div>
+                    <button type="submit" class="support-button">Destek Talebi Gönder</button>
+                </form>
+            </div>
+
+            <!-- Sıkça Sorulan Sorular -->
+            <div class="col-md-6 faq-section">
+                <h4 class="section-title">Sıkça Sorulan Sorular</h4>
+                <div class="faq-item">
+                    <h5>1. Hesabımı nasıl sıfırlayabilirim?</h5>
+                    <p>Hesabınızı sıfırlamak için giriş sayfasındaki "Şifrenizi mi unuttunuz?" bağlantısına tıklayarak şifrenizi sıfırlayabilirsiniz.</p>
+                </div>
+                <div class="faq-item">
+                    <h5>2. Yardım almak için nasıl destek talep edebilirim?</h5>
+                    <p>Destek talebinizi bu sayfadan formu doldurarak bize iletebilirsiniz. En kısa sürede size geri dönüş yapacağız.</p>
+                </div>
+                <div class="faq-item">
+                    <h5>3. Destek talebime ne kadar sürede cevap alırım?</h5>
+                    <p>Destek taleplerinize genellikle 24 saat içinde cevap veriyoruz. Yoğunluk durumuna göre bu süre değişebilir.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    @* <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script> *@
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ödeme Sayfası</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Sayfa tamamını kapsayacak şekilde dikeyde ortalama */
+        body, html {
+            height: 100%; /* Sayfa yüksekliği tam olarak 100% olmalı */
+            margin: 0; /* Sayfa kenar boşluklarını sıfırlıyoruz */
+            display: flex;
+            flex-direction: column; /* Flex yönünü dikey yapıyoruz */
+            justify-content: center; /* Dikeyde ortalama */
+        }
+        .container {
+            max-width: 600px; /* Container genişliğini biraz büyüttük */
+            width: 100%; /* Container genişliğini %100 yapalım */
+            background-color: #f8f9fa; /* Açık gri arka plan */
+            border-radius: 10px; /* Kenarları yuvarlatmak için */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Gölgeleme ekledik */
+            padding: 30px; /* İçeriğe padding ekledik */
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        h2 {
+            background-color: #007bff; /* Mavi arka plan */
+            color: white; /* Beyaz yazı rengi */
+            padding: 10px; /* Yazının etrafına padding */
+            margin-top: -30px; /* Başlığı biraz daha yukarı almak için margin-top ekledik */
+            border-radius: 5px; /* Başlık kenarlarını yuvarladık */
+        }
+        .btn-block {
+            font-size: 1.1rem; /* Buton fontunu büyüttük */
+        }
+        .alert {
+            font-size: 1rem; /* Mesaj yazı boyutunu büyüttük */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="text-center">Ödeme Sayfası</h2>
+        
+        <div class="form-group">
+            <label for="odenecekTutar">Ödenecek Tutar</label>
+            <input type="text" class="form-control" id="odenecekTutar" value="1000 ₺" disabled>
+        </div>
+
+        <div class="form-group">
+            <label for="girilenTutar">Girilen Tutar</label>
+            <input type="number" class="form-control" id="girilenTutar" placeholder="Ödeme tutarını girin">
+        </div>
+
+        <button class="btn btn-success btn-block" onclick="odemeYap()">Ödemeyi Yap</button>
+        
+        <div id="message" class="mt-3"></div>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    @* <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script> *@
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function odemeYap() {
+            var odenenTutar = document.getElementById('girilenTutar').value;
+            var odemeMiktari = document.getElementById('odenecekTutar').value.replace(' ₺', '');
+
+            if (odenenTutar == "") {
+                document.getElementById('message').innerHTML = "<div class='alert alert-danger'>Lütfen ödeme tutarını girin.</div>";
+            } else if (parseFloat(odenenTutar) < parseFloat(odemeMiktari)) {
+                document.getElementById('message').innerHTML = "<div class='alert alert-warning'>Ödeme başarısız.Tekrar Deneyiniz.</div>";
+            } else if (parseFloat(odenenTutar) == parseFloat(odemeMiktari)) {
+                document.getElementById('message').innerHTML = "<div class='alert alert-success'>Ödeme başarılı! Teşekkür ederiz.</div>";
+            } else {
+                document.getElementById('message').innerHTML = "<div class='alert alert-info'>İşlem gerçekleştirilemedi. Tekrar Deneyiniz.</div>";
+            }
+        }
+    </script>
+
+</body>
+</html>

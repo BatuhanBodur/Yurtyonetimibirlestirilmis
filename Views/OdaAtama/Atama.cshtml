@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öğrenci Oda Atama</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 30px; /* Sayfanın üst kısmındaki boşluğu artırdık */
+        }
+        .container {
+            background: #fff;
+            padding: 30px 40px; /* Container içindeki padding'i artırdık */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 500px; /* Container genişliğini artırdık */
+            margin: 10px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #007bff; /* Başlık rengini mavi yaptık */
+            margin-bottom: 20px; /* Başlıklar arasındaki boşluğu artırdık */
+        }
+        .form-group {
+            margin-bottom: 20px; /* Form grupları arasındaki boşluğu artırdık */
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 12px; /* Padding'i artırdık */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px; /* Font boyutunu büyüttük */
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 15px 20px; /* Buton boyutunu büyüttük */
+            font-size: 18px; /* Font boyutunu büyüttük */
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e7f4e4;
+            border: 1px solid #c1e1c1;
+            color: #2b7a2b;
+            border-radius: 5px;
+            font-size: 16px; /* Font boyutunu büyüttük */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Öğrenci Oda Atama</h1>
+        <form id="studentRoomForm">
+            <div class="form-group">
+                <label for="studentName">Ad Soyad</label>
+                <input type="text" id="studentName" placeholder="Ad Soyad girin" required>
+            </div>
+            <div class="form-group">
+                <label for="studentDepartment">Bölüm</label>
+                <input type="text" id="studentDepartment" placeholder="Bölüm girin" required>
+            </div>
+            <div class="form-group">
+                <label for="studentTC">T.C. Kimlik Numarası</label>
+                <input type="text" id="studentTC" placeholder="T.C. Kimlik No girin" maxlength="11" required>
+            </div>
+            <div class="form-group">
+                <label for="studentBirthplace">Doğum Yeri</label>
+                <input type="text" id="studentBirthplace" placeholder="Doğum yerini girin" required>
+            </div>
+            <div class="form-group">
+                <label for="studentAddress">Ev Adresi</label>
+                <textarea id="studentAddress" placeholder="Ev adresini girin" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="studentPhone">Telefon Numarası</label>
+                <input type="text" id="studentPhone" placeholder="0 (5__) ___ __ ___" maxlength="16" required>
+            </div>
+            <div class="form-group">
+                <label for="roomSelect">Boş Oda Seçin</label>
+                <select id="roomSelect" required>
+                    <!-- Odalar dinamik olarak doldurulacak -->
+                </select>
+            </div>
+            <button type="button" id="assignButton">Öğrenciyi Odaya Ata</button>
+        </form>
+        <div class="result" id="resultMessage" style="display: none;"></div>
+    </div>
+
+    <script>
+        // Telefon formatlama
+        const phoneInput = document.getElementById("studentPhone");
+
+        phoneInput.addEventListener("input", (e) => {
+            let value = phoneInput.value.replace(/\D/g, ""); // Sadece sayıları al
+            if (value.length > 11) value = value.substring(0, 11); // Maksimum uzunluk
+            let formatted = "0 (";
+            if (value.length > 1) formatted += value.substring(1, 4);
+            if (value.length > 4) formatted += ") " + value.substring(4, 7);
+            if (value.length > 7) formatted += " " + value.substring(7, 9);
+            if (value.length > 9) formatted += " " + value.substring(9, 11);
+            phoneInput.value = formatted;
+        });
+
+        // Başlangıçtaki odalar ve durumları (örnek veri)
+        const rooms = [
+            { number: 101, status: "available" },
+            { number: 102, status: "occupied" },
+            { number: 103, status: "available" },
+            { number: 104, status: "occupied" },
+            { number: 105, status: "available" }
+        ];
+
+        const roomSelect = document.getElementById("roomSelect");
+        const resultMessage = document.getElementById("resultMessage");
+
+        // Boş odaları dropdown menüsüne ekle
+        function populateRoomSelect() {
+            roomSelect.innerHTML = ""; // Önce temizle
+            rooms
+                .filter(room => room.status === "available")
+                .forEach(room => {
+                    const option = document.createElement("option");
+                    option.value = room.number;
+                    option.textContent = `Oda No: ${room.number}`;
+                    roomSelect.appendChild(option);
+                });
+        }
+
+        // Öğrenciyi seçilen odaya ata
+        document.getElementById("assignButton").addEventListener("click", () => {
+            const name = document.getElementById("studentName").value;
+            const department = document.getElementById("studentDepartment").value;
+            const tc = document.getElementById("studentTC").value;
+            const birthplace = document.getElementById("studentBirthplace").value;
+            const address = document.getElementById("studentAddress").value;
+            const phone = document.getElementById("studentPhone").value;
+            const selectedRoom = roomSelect.value;
+
+            if (!name || !department || !tc || !birthplace || !address || !phone || !selectedRoom) {
+                alert("Lütfen tüm alanları doldurun.");
+                return;
+            }
+
+            // Seçilen odanın durumunu güncelle
+            const room = rooms.find(room => room.number === parseInt(selectedRoom));
+            if (room) room.status = "occupied";
+
+            // Sonuç mesajını göster
+            resultMessage.style.display = "block";
+            resultMessage.innerHTML = `
+                <strong>${name}</strong> adlı öğrenci, <strong>${selectedRoom}</strong> numaralı odaya atanmıştır.
+                <br><strong>Telefon:</strong> ${phone}<br><strong>Adres:</strong> ${address}
+            `;
+
+            // Oda listesini güncelle
+            populateRoomSelect();
+
+            // Formu temizle
+            document.getElementById("studentRoomForm").reset();
+        });
+
+        // Sayfa yüklendiğinde boş odaları göster
+        populateRoomSelect();
+    </script>
+</body>
+</html>

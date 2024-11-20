@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öğrenci Durumu Sorgulama</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #fff;
+            padding: 60px 80px;  /* Paddingi biraz küçülttük */
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);  /* Gölgeyi biraz hafiflettik */
+            border-radius: 12px;  /* Köşeleri biraz yuvarlattık */
+            width: 1000px;  /* Tabloyu biraz küçülttük */
+            margin: 10px;
+        }
+        h1 {
+            text-align: center;
+            color: #007bff; /* Mavi başlık rengi */
+            font-size: 48px;  /* Başlık fontunu biraz küçülttük */
+        }
+        .form-group {
+            margin-bottom: 40px;  /* Alanlar arasındaki boşluğu azaltarak biraz sıkıştırdık */
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #555;
+            font-size: 28px;  /* Etiket font boyutunu biraz küçülttük */
+        }
+        input {
+            width: 100%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 20px;  /* Input elemanlarının fontunu küçülttük */
+        }
+        .status {
+            margin-top: 30px;
+            display: none;
+        }
+        .status .name {
+            font-size: 36px;  /* Öğrenci adı kısmının fontunu küçülttük */
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .status .student-phone {
+            font-size: 32px;  /* Telefon kısmının fontunu küçülttük */
+            margin-bottom: 20px;
+        }
+        button {
+            font-size: 28px;  /* Buton fontunu biraz küçülttük */
+            padding: 24px 30px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 30px;
+            border: none;
+        }
+        .green {
+            background-color: green;
+            color: white;
+        }
+        .red {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Öğrenci Durumu Sorgulama</h1>
+        <form id="studentStatusForm">
+            <div class="form-group">
+                <label for="studentTC">Öğrenci T.C. Kimlik Numarası</label>
+                <input type="text" id="studentTC" placeholder="T.C. Kimlik No girin" maxlength="11" required>
+            </div>
+            <button type="button" id="checkButton">Durumu Kontrol Et</button>
+        </form>
+        <div class="status" id="statusMessage">
+            <div class="name" id="studentName"></div>
+            <div class="student-phone" id="studentPhone"></div>
+            <button id="statusButton" class="green" disabled></button>
+        </div>
+    </div>
+
+    <script>
+        // Öğrencilerin verileri
+        const students = [
+            { tc: "12345678901", phone: "05321234567", name: "Ahmet Yılmaz", isInDorm: true },
+            { tc: "23456789012", phone: "05322345678", name: "Ayşe Demir", isInDorm: false },
+            { tc: "34567890123", phone: "05323456789", name: "Mehmet Can", isInDorm: true },
+            { tc: "45678901234", phone: "05324567890", name: "Elif Kaya", isInDorm: false }
+        ];
+
+        // Öğrenci T.C. kimliğine göre durumu kontrol etme
+        document.getElementById("checkButton").addEventListener("click", function() {
+            const studentTC = document.getElementById("studentTC").value;
+            const student = students.find(s => s.tc === studentTC);
+            const statusMessage = document.getElementById("statusMessage");
+            const studentName = document.getElementById("studentName");
+            const studentPhone = document.getElementById("studentPhone");
+            const statusButton = document.getElementById("statusButton");
+
+            // Durum mesajını sıfırlama
+            statusMessage.style.display = "none";
+            statusButton.classList.remove("green", "red");
+
+            if (!student) {
+                alert("Öğrenci bulunamadı. Lütfen T.C. kimlik numarasını kontrol edin.");
+                return;
+            }
+
+            // Öğrenci adı, soyadı ve telefon numarasını göster
+            studentName.textContent = `Adı Soyadı: ${student.name}`;
+            studentPhone.textContent = `Telefon Numarası: ${student.phone}`;
+
+            // Öğrenci yurttaysa yeşil buton, değilse kırmızı buton göster
+            statusMessage.style.display = "block";
+            if (student.isInDorm) {
+                statusButton.classList.add("green");
+                statusButton.classList.remove("red");
+                statusButton.textContent = "Öğrenci şu anda yurtta.";
+            } else {
+                statusButton.classList.add("red");
+                statusButton.classList.remove("green");
+                statusButton.textContent = "Öğrenci şu anda yurtta değil.";
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yurt Güvenlik Personeli</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Sayfa yüksekliğini tamamla */
+        }
+        h1 {
+            color: #fff;
+            background-color: #007bff; /* Mavi kutu */
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            text-align: center;
+            width: 100%;
+            max-width: 1000px; /* Genişlik arttırıldı */
+        }
+        .container {
+            width: 95%;
+            max-width: 1000px; /* Genişlik arttırıldı */
+            background: #fff;
+            padding: 40px; /* Padding arttırıldı */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: auto; /* Ortalamak için */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0; /* Aralık arttırıldı */
+            font-size: 20px; /* Yazı boyutu arttırıldı */
+        }
+        th, td {
+            padding: 25px; /* Hücre içi boşluk arttırıldı */
+            text-align: left;
+            border-bottom: 2px solid #ddd; /* Daha kalın sınır */
+        }
+        th {
+            background-color: #007bff; /* Mavi renk */
+            color: #fff;
+        }
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        .on-duty {
+            background-color: #d4edda;
+        }
+    </style>
+</head>
+<body>
+    <h1>Güvenlik Personeli Bilgileri</h1>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Ad</th>
+                    <th>Soyad</th>
+                    <th>TC Kimlik No</th>
+                    <th>Telefon Numarası</th>
+                    <th>Görev Durumu</th>
+                </tr>
+            </thead>
+            <tbody id="securityTable">
+                <!-- Güvenlik bilgileri buraya eklenecek -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Örnek veri
+        const securityData = [
+            { name: "Ahmet", surname: "Yılmaz", tc: "12345678901", phone: "05331234567", onDuty: true },
+            { name: "Ayşe", surname: "Kara", tc: "98765432100", phone: "05449876543", onDuty: false },
+            { name: "Mehmet", surname: "Öztürk", tc: "11122233344", phone: "05551112233", onDuty: true },
+            { name: "Fatma", surname: "Demir", tc: "22233344455", phone: "05661112233", onDuty: false }
+        ];
+
+        // Tabloyu dolduran fonksiyon
+        function populateTable() {
+            const tableBody = document.getElementById("securityTable");
+            tableBody.innerHTML = ""; // Mevcut içeriği temizle
+
+            // Görevde olanları üste sıralayarak listele
+            const sortedData = [...securityData].sort((a, b) => b.onDuty - a.onDuty);
+
+            sortedData.forEach(person => {
+                const row = document.createElement("tr");
+                row.className = person.onDuty ? "on-duty" : ""; // Görevde olanlar için farklı stil uygula
+
+                row.innerHTML = `
+                    <td>${person.name}</td>
+                    <td>${person.surname}</td>
+                    <td>${person.tc}</td>
+                    <td>${person.phone}</td>
+                    <td>${person.onDuty ? "Görevde" : "Görevde Değil"}</td>
+                `;
+
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Sayfa yüklendiğinde tabloyu doldur
+        document.addEventListener("DOMContentLoaded", populateTable);
+    </script>
+</body>
+</html>

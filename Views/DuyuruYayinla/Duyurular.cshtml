@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Duyuru Yayınlama</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      width: 60%;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .container h2 {
+      color: #007BFF;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .form-group label {
+      font-size: 16px;
+      color: #333;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      box-sizing: border-box;
+    }
+    .form-group textarea {
+      height: 150px;
+      resize: none;
+    }
+    .form-group input[type="file"] {
+      border: none;
+    }
+    .submit-btn {
+      padding: 12px 25px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .submit-btn:hover {
+      background-color: #218838;
+    }
+    .note {
+      color: #ff6600;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Duyuru Yayınla</h2>
+    
+    <div class="form-group">
+      <label for="announcementTitle">Duyuru Başlığı</label>
+      <input type="text" id="announcementTitle" placeholder="Başlık girin" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="announcementText">Duyuru Metni</label>
+      <textarea id="announcementText" placeholder="Duyuru içeriğini buraya girin..." required></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label for="announcementImage">Fotoğraf Ekle (Opsiyonel)</label>
+      <input type="file" id="announcementImage" accept="image/*">
+    </div>
+    
+    <button class="submit-btn" onclick="publishAnnouncement()">Yayınla</button>
+    
+    <div class="note">
+      <p>Not: Lütfen duyurunun başlık ve metnini eksiksiz doldurduğunuzdan emin olun.</p>
+    </div>
+  </div>
+
+  <script>
+    function publishAnnouncement() {
+      const title = document.getElementById("announcementTitle").value;
+      const text = document.getElementById("announcementText").value;
+      const image = document.getElementById("announcementImage").files[0];
+
+      if (!title || !text) {
+        alert("Başlık ve metin kısmını doldurmanız gerekmektedir.");
+        return;
+      }
+
+      let announcementContent = `<h3>${title}</h3><p>${text}</p>`;
+      if (image) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          announcementContent += `<img src="${e.target.result}" alt="Duyuru Resmi" style="width:100%; height: auto; border-radius: 10px; margin-top: 20px;">`;
+          alert("Duyuru başarılı bir şekilde yayınlandı.");
+          // Burada duyuru içeriği bir veritabanına gönderilebilir veya başka bir işlem yapılabilir.
+          console.log(announcementContent);
+        };
+        reader.readAsDataURL(image);
+      } else {
+        alert("Duyuru başarılı bir şekilde yayınlandı.");
+        console.log(announcementContent);
+      }
+    }
+  </script>
+
+</body>
+</html>

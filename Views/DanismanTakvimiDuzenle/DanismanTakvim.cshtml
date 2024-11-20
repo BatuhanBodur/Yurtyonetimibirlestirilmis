@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danışman Takvimi</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin-top: 50px;
+        }
+        .calendar-container {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: white;
+        }
+        .calendar-header {
+            text-align: center;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            background-color: #007bff; /* Başlık için arka plan mavi */
+            color: white;
+            border-radius: 5px;
+        }
+        .calendar-table {
+            width: 100%;
+            table-layout: fixed;
+            text-align: center;
+        }
+        .calendar-table th,
+        .calendar-table td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            position: relative; /* Tooltip için gerekli */
+        }
+        .calendar-day {
+            cursor: pointer;
+        }
+        .calendar-day:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+        .available {
+            background-color: #28a745;
+            color: white;
+        }
+        .unavailable {
+            background-color: #dc3545;
+            color: white;
+        }
+        .appointment-details {
+            margin-top: 10px;
+        }
+        .calendar-table th {
+            background-color: #007bff; /* Saatlerin başlık arka planı mavi */
+            color: white;
+        }
+        .calendar-table td {
+            background-color: #f0f8ff; /* Günlerin arka planı açık mavi */
+        }
+
+        /* Sidebar Stil */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px; /* Başlangıçta gizli */
+            width: 300px;
+            height: 100%;
+            background-color: #dc3545; /* Kırmızı arka plan */
+            color: white;
+            transition: 0.3s; /* Pencerenin kayma animasyonu */
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        .sidebar h4 {
+            margin-top: 0;
+        }
+
+        .sidebar .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .sidebar.open {
+            left: 0; /* Pencere açıldığında sola kayacak */
+        }
+
+        .sidebar p {
+            margin: 10px 0;
+        }
+
+        .calendar-day:hover .tooltip {
+            display: block;
+        }
+
+        .tooltip {
+            display: none;
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background-color: #333;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            z-index: 10;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="calendar-header">Danışman Takvimi</h2>
+
+        <!-- Takvim -->
+        <div class="calendar-container">
+            <table class="calendar-table">
+                <thead>
+                    <tr>
+                        <th>Gün</th>
+                        <th>09:00</th>
+                        <th>10:00</th>
+                        <th>11:00</th>
+                        <th>12:00</th>
+                        <th>13:00</th>
+                        <th>14:00</th>
+                        <th>15:00</th>
+                        <th>16:00</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Pazartesi -->
+                    <tr>
+                        <td>Pazartesi</td>
+                        <td class="calendar-day" data-day="1" data-time="09:00" data-date="2024-11-25">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="1" data-time="10:00" data-date="2024-11-25" onclick="showAppointmentDetails('Ali Veli', '2024-11-25', '10:00', '5551234567')">
+                            Dolu
+                            <div class="tooltip">Randevuyu alan: Ali Veli</div>
+                        </td>
+                        <td class="calendar-day" data-day="1" data-time="11:00" data-date="2024-11-25">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="1" data-time="12:00" data-date="2024-11-25">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="1" data-time="13:00" data-date="2024-11-25">
+                            Dolu
+                            <div class="tooltip">Randevuyu alan: Serkan Aksoy</div>
+                        </td>
+                        <td class="calendar-day" data-day="1" data-time="14:00" data-date="2024-11-25">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="1" data-time="15:00" data-date="2024-11-25">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="1" data-time="16:00" data-date="2024-11-25" onclick="showAppointmentDetails('Gökhan Demir', '2024-11-25', '16:00', '5559876543')">
+                            Dolu
+                            <div class="tooltip">Randevuyu alan: Gökhan Demir</div>
+                        </td>
+                    </tr>
+                    <!-- Salı -->
+                    <tr>
+                        <td>Salı</td>
+                        <td class="calendar-day" data-day="2" data-time="09:00" data-date="2024-11-26">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="2" data-time="10:00" data-date="2024-11-26" onclick="showAppointmentDetails('Ahmet Yılmaz', '2024-11-26', '10:00', '5552345678')">
+                            Dolu
+                            <div class="tooltip">Randevuyu alan: Ahmet Yılmaz</div>
+                        </td>
+                        <td class="calendar-day" data-day="2" data-time="11:00" data-date="2024-11-26">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="2" data-time="12:00" data-date="2024-11-26">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="2" data-time="13:00" data-date="2024-11-26">
+                            Dolu
+                            <div class="tooltip">Randevuyu alan: Ahmet Çelik</div>
+                        </td>
+                        <td class="calendar-day" data-day="2" data-time="14:00" data-date="2024-11-26">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="2" data-time="15:00" data-date="2024-11-26">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="2" data-time="16:00" data-date="2024-11-26" onclick="showAppointmentDetails('Mehmet Can', '2024-11-26', '16:00', '5553456789')">
+                            Dolu
+                            <div class="tooltip">Randevuyu alan: Mehmet Can</div>
+                        </td>
+                    </tr>
+                    <!-- Çarşamba -->
+                    <tr>
+                        <td>Çarşamba</td>
+                        <td class="calendar-day" data-day="3" data-time="09:00" data-date="2024-11-27">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="3" data-time="10:00" data-date="2024-11-27">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="3" data-time="11:00" data-date="2024-11-27" onclick="showAppointmentDetails('Emre Atan', '2024-11-27', '11:00', '5554567890')">
+                            Dolu
+                            <div class="tooltip">Randevuyu alan: Emre Atan</div>
+                        </td>
+                        <td class="calendar-day" data-day="3" data-time="12:00" data-date="2024-11-27">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="3" data-time="13:00" data-date="2024-11-27">
+                            Dolu
+                            <div class="tooltip">Randevuyu alan: Hakan Demir</div>
+                        </td>
+                        <td class="calendar-day" data-day="3" data-time="14:00" data-date="2024-11-27">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="3" data-time="15:00" data-date="2024-11-27">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="3" data-time="16:00" data-date="2024-11-27" onclick="showAppointmentDetails('Ali Can', '2024-11-27', '16:00', '5555678901')">
+                            Dolu
+                            <div class="tooltip">Randevuyu alan: Ali Can</div>
+                        </td>
+                    </tr>
+                    <!-- Perşembe -->
+                    <tr>
+                        <td>Perşembe</td>
+                        <td class="calendar-day" data-day="4" data-time="09:00" data-date="2024-11-28">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="4" data-time="10:00" data-date="2024-11-28">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="4" data-time="11:00" data-date="2024-11-28">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="4" data-time="12:00" data-date="2024-11-28">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="4" data-time="13:00" data-date="2024-11-28">
+                            Dolu
+                            <div class="tooltip">Randevuyu alan: Batuhan Aydın</div>
+                        </td>
+                        <td class="calendar-day" data-day="4" data-time="14:00" data-date="2024-11-28">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="4" data-time="15:00" data-date="2024-11-28">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="4" data-time="16:00" data-date="2024-11-28">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                    </tr>
+                    <!-- Cuma -->
+                    <tr>
+                        <td>Cuma</td>
+                        <td class="calendar-day" data-day="5" data-time="09:00" data-date="2024-11-29">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="5" data-time="10:00" data-date="2024-11-29">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="5" data-time="11:00" data-date="2024-11-29">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="5" data-time="12:00" data-date="2024-11-29">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="5" data-time="13:00" data-date="2024-11-29">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="5" data-time="14:00" data-date="2024-11-29">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="5" data-time="15:00" data-date="2024-11-29">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                        <td class="calendar-day" data-day="5" data-time="16:00" data-date="2024-11-29">
+                            Boş
+                            <div class="tooltip">Randevu boş</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Sidebar for appointment details -->
+    <div id="appointment-sidebar" class="sidebar">
+        <span class="close-btn" onclick="closeSidebar()">×</span>
+        <h4>Randevu Detayları</h4>
+        <p id="appointment-info"></p>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    @* <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script> *@
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Sidebar'ı açma fonksiyonu
+        function showAppointmentDetails(name, date, time, phone) {
+            var appointmentInfo = "Randevu sahibi: " + name + "<br>Randevu tarihi: " + date + "<br>Randevu saati: " + time + "<br>Telefon: " + phone;
+            document.getElementById("appointment-info").innerHTML = appointmentInfo;
+            document.getElementById("appointment-sidebar").classList.add("open");
+        }
+
+        // Sidebar'ı kapatma fonksiyonu
+        function closeSidebar() {
+            document.getElementById("appointment-sidebar").classList.remove("open");
+        }
+    </script>
+</body>
+</html>

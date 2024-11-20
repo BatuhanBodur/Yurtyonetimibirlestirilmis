@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablo Örneği</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        h2 {
+            text-align: center; /* Yatayda ortalama */
+            background-color: #007bff; /* Mavi arka plan */
+            color: white; /* Yazı rengini beyaz yap */
+            padding: 10px; /* Başlık etrafında boşluk */
+            border-radius: 5px; /* Yuvarlatılmış köşeler */
+        }
+        .table thead {
+            background-color: #007bff; /* Tablo başlıklarının arka planı */
+            color: white; /* Yazı rengini beyaz yap */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-5">
+
+        <h2>İzin Geçmişi</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">İzin No</th>
+                    <th scope="col">Tarih</th>
+                    <th scope="col">Ad</th>
+                    <th scope="col">Soyad</th>
+                    <th scope="col">Adres</th>
+                    <th scope="col">Görevli</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <th scope="row">01/01/2024<br>19:30</th>
+                    <td>Batuhan</td>
+                    <td>Bodur</td>
+                    <td>Fatih mahallesi 21.sokak no:10/Merkez/Yozgat</td>
+                    <td>Ahmet Kara</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <th scope="row">01/02/2024<br>16:23</th>
+                    <td>Batuhan</td>
+                    <td>Bodur</td>
+                    <td>Fevzi Çakmak Mahallesi, 67. Sokak No: 15, Bursa</td>
+                    <td>Ali Özdemir</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <th scope="row">15/03/2024<br>12:45</th>
+                    <td>Batuhan</td>
+                    <td>Bodur</td>
+                    <td>Cumhuriyet Mahallesi, 102. Sokak No: 12, İzmir</td>
+                    <td>Veli Yılmaz</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <th scope="row">05/04/2024 <br>11:10</th>
+                    <td>Batuhan</td>
+                    <td>Bodur</td>
+                    <td>Mimar Sinan Caddesi No: 88, Konak, İzmir</td>
+                    <td>Ahmet Kara</td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <th scope="row">17/05/2024<br>09:30</th>
+                    <td>Batuhan</td>
+                    <td>Bodur</td>
+                    <td>Gazi Mustafa Kemal Bulvarı No:7, Kadıköy, İstanbul</td>
+                    <td>Ali Özdemir</td>
+                </tr>
+                <tr>
+                    <th scope="row">6</th>
+                    <th scope="row">12/06/2024<br>14:24</th>
+                    <td>Batuhan</td>
+                    <td>Bodur</td>
+                    <td>Atatürk Caddesi No:45, Beşiktaş, İstanbul</td>
+                    <td>Veli Yılmaz</td>
+                </tr>
+                <tr>
+                    <th scope="row">7</th>
+                    <th scope="row">18/07/2024<br>19:40</th>
+                    <td>Batuhan</td>
+                    <td>Bodur</td>
+                    <td>Yenişehir Mahallesi, 28. Cadde No: 3, Ankara</td>
+                    <td>Ahmet Kara</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS ve Popper.js CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    @* <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script> *@
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

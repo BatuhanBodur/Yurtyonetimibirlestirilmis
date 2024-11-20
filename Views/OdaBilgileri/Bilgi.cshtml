@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oda ve Yatak Durumu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    header {
+      padding: 20px;
+      background-color: #f3f3f3;
+      text-align: center;
+      border-bottom: 2px solid #ddd;
+    }
+    header input {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin-right: 10px;
+    }
+    header button {
+      padding: 10px 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    .main-content {
+      display: flex;
+      flex: 1;
+    }
+    .room-info, .student-info {
+      flex: 1;
+      padding: 20px;
+    }
+    .room-info {
+      border-right: 2px solid #ddd;
+      background-color: #f9f9f9;
+    }
+    .beds {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .bed {
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .bed .status {
+      display: flex;
+      align-items: center;
+    }
+    .status .icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
+    .status .full {
+      background-color: green;
+    }
+    .status .empty {
+      background-color: red;
+    }
+    .bed-number {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .student-info table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 16px; /* Dolguyu artırdık */
+      text-align: center; /* Ortaladık */
+      height: 50px; /* Yüksekliği artırdık */
+    }
+    th {
+      background-color: #007BFF; /* Başlıkların arka plan rengini mavi yap */
+      color: white; /* Yazı rengini beyaz yap */
+      vertical-align: middle; /* Alttan ve üstten ortala */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <label for="roomNumber">Oda No:</label>
+    <input type="number" id="roomNumber" placeholder="Oda numarasını girin">
+    <button onclick="showRoom()">Görüntüle</button>
+  </header>
+  <div class="main-content">
+    <div class="room-info">
+      <h2 id="roomTitle">Oda No: -</h2>
+      <div class="beds" id="bedsContainer">
+        <!-- Yatak bilgileri burada gösterilecek -->
+      </div>
+    </div>
+    <div class="student-info">
+      <h2>Öğrenci Bilgileri</h2>
+      <table id="studentTable">
+        <thead>
+          <tr>
+            <th>İsim</th>
+            <th>Soyisim</th>
+            <th>Doğum Yeri</th>
+            <th>Bölüm</th>
+            <th>Telefon</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Öğrenci bilgileri burada gösterilecek -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const rooms = {
+      101: [
+        { bed: 1, status: "full", name: "Ahmet", surname: "Demir", birthplace: "İstanbul", department: "Bilgisayar Müh.", phone: "555-123-4567" },
+        { bed: 2, status: "full", name: "Mehmet", surname: "Çelik", birthplace: "Bursa", department: "İnşaat Müh.", phone: "555-654-3210" },
+        { bed: 3, status: "full", name: "Emir", surname: "Kaya", birthplace: "İzmir", department: "Hukuk", phone: "555-789-1234" },
+        { bed: 4, status: "full", name: "Batuhan", surname: "Yılmaz", birthplace: "Ankara", department: "Makine Müh.", phone: "555-987-6543" },
+      ]
+    };
+
+    function showRoom() {
+      const roomNumber = document.getElementById("roomNumber").value;
+      const roomData = rooms[roomNumber];
+
+      // Yatak bilgilerini temizle
+      const bedsContainer = document.getElementById("bedsContainer");
+      bedsContainer.innerHTML = "";
+
+      // Tabloyu temizle
+      const studentTableBody = document.querySelector("#studentTable tbody");
+      studentTableBody.innerHTML = "";
+
+      if (roomData) {
+        // Oda başlığını güncelle
+        document.getElementById("roomTitle").innerText = `Oda No: ${roomNumber}`;
+
+        roomData.forEach(bed => {
+          // Yatak durumu
+          const bedDiv = document.createElement("div");
+          bedDiv.classList.add("bed");
+
+          bedDiv.innerHTML = `
+            <div class="bed-number">#${bed.bed}</div>
+            <div class="status">
+              <div class="icon ${bed.status === "full" ? "full" : "empty"}"></div>
+              <span>${bed.status === "full" ? "Dolu" : "Boş"}</span>
+            </div>
+          `;
+
+          if (bed.status === "full") {
+            bedDiv.innerHTML += `
+              <div class="bed-info">
+                <strong>Öğrenci:</strong> ${bed.name} ${bed.surname}<br>
+                <strong>Doğum Yeri:</strong> ${bed.birthplace}
+              </div>
+            `;
+
+            // Tabloya ekle
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td>${bed.name}</td>
+              <td>${bed.surname}</td>
+              <td>${bed.birthplace}</td>
+              <td>${bed.department}</td>
+              <td>${bed.phone}</td>
+            `;
+            studentTableBody.appendChild(row);
+          } else {
+            bedDiv.innerHTML += `<div class="bed-info"><em>Boş yatak</em></div>`;
+          }
+
+          bedsContainer.appendChild(bedDiv);
+        });
+      } else {
+        document.getElementById("roomTitle").innerText = "Geçerli bir oda numarası girin.";
+      }
+    }
+  </script>
+</body>
+</html>

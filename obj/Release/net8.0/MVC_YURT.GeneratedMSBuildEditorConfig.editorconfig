@@ -1,0 +1,135 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = MVC_YURT
+build_property.RootNamespace = MVC_YURT
+build_property.ProjectDir = C:\Users\batuh\OneDrive\Masaüstü\Yurt-master\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\batuh\OneDrive\Masaüstü\Yurt-master
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/AnaSayfa/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5hU2F5ZmFcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/DanismanTakvimiDuzenle/DanismanTakvim.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuaXNtYW5UYWt2aW1pRHV6ZW5sZVxEYW5pc21hblRha3ZpbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/DanismanTakvimi/Danisman.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFuaXNtYW5UYWt2aW1pXERhbmlzbWFuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/Destek/Supported.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVzdGVrXFN1cHBvcnRlZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/DuyuruYayinla/Duyurular.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRHV5dXJ1WWF5aW5sYVxEdXl1cnVsYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/GirisEkrani/Giris.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lyaXNFa3JhbmlcR2lyaXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/GuvenlikPersonel/Personel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3V2ZW5saWtQZXJzb25lbFxQZXJzb25lbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/IzinBilgileri/Izin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXppbkJpbGdpbGVyaVxJemluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/IzinTalep/Izin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXppblRhbGVwXEl6aW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/KursAcma/Kurs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS3Vyc0FjbWFcS3Vycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/MisafirOgrenci/Misafir.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWlzYWZpck9ncmVuY2lcTWlzYWZpci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/OdaAtama/Atama.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2RhQXRhbWFcQXRhbWEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/OdaBilgileri/Bilgi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2RhQmlsZ2lsZXJpXEJpbGdpLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/OdaDegisikligi/Oda.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2RhRGVnaXNpa2xpZ2lcT2RhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/OdaDegisimi/Degisim.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2RhRGVnaXNpbWlcRGVnaXNpbS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/OdemeDurumu/Odeme.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2RlbWVEdXJ1bXVcT2RlbWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/OdemeYap/Odeme.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2RlbWVZYXBcT2RlbWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/OgrenciDevamsizlik/Devamsizlik.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2dyZW5jaURldmFtc2l6bGlrXERldmFtc2l6bGlrLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/OgrenciProfili/Profil.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2dyZW5jaVByb2ZpbGlcUHJvZmlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/SporRezervasyon/Rezervasyon.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3BvclJlemVydmFzeW9uXFJlemVydmFzeW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/YemekListesi/Yemek.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWWVtZWtMaXN0ZXNpXFllbWVrLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/YurtDegisimi/Degisim.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWXVydERlZ2lzaW1pXERlZ2lzaW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/YurtGiderleri/Gider.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWXVydEdpZGVybGVyaVxHaWRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/YurtIletisim/Iletisim.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWXVydElsZXRpc2ltXElsZXRpc2ltLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/batuh/OneDrive/Masaüstü/Yurt-master/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-c1372firwa
