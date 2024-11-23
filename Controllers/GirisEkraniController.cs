@@ -26,66 +26,68 @@ public class GirisEkraniController : Controller
             userPassword = password
         };
 
-        try
-        {
-            using (var client = new HttpClient())
-            {
-                // JSON içeriği oluştur
-                var jsonContent = new StringContent(JsonConvert.SerializeObject(requestBody), Encoding.UTF8, "application/json");
+        return RedirectToAction("Index", "AnaSayfa");
 
-                // POST isteği gönder
-                var response = await client.PostAsync(apiUrl, jsonContent);
+        //try
+        //{
+        //    using (var client = new HttpClient())
+        //    {
+        //        // JSON içeriği oluştur
+        //        var jsonContent = new StringContent(JsonConvert.SerializeObject(requestBody), Encoding.UTF8, "application/json");
 
-                // StatusCode'a göre yanıtı işle
-                if (response.IsSuccessStatusCode)
-                {
-                    // Başarılı yanıt durumunda içerik okunur
-                    var responseContent = await response.Content.ReadAsStringAsync();
-                    var validationResponse = JsonConvert.DeserializeObject<UserResponse>(responseContent);
+        //        // POST isteği gönder
+        //        var response = await client.PostAsync(apiUrl, jsonContent);
 
-                    if (validationResponse != null && validationResponse.User != null)
-                    {
-                        // Kullanıcı doğrulandı, rolü al
-                        var userRole = validationResponse.User.Rol;
+        //        // StatusCode'a göre yanıtı işle
+        //        if (response.IsSuccessStatusCode)
+        //        {
+        //            // Başarılı yanıt durumunda içerik okunur
+        //            var responseContent = await response.Content.ReadAsStringAsync();
+        //            var validationResponse = JsonConvert.DeserializeObject<UserResponse>(responseContent);
 
-                        // Rolü oturumda sakla
-                        HttpContext.Session.SetString("UserRole", userRole);
+        //            if (validationResponse != null && validationResponse.User != null)
+        //            {
+        //                // Kullanıcı doğrulandı, rolü al
+        //                var userRole = validationResponse.User.Rol;
 
-                        // Giriş başarılı, AnaSayfa/Index'e yönlendir
-                        return RedirectToAction("Index", "AnaSayfa");
-                    }
-                    else
-                    {
-                        ViewBag.ErrorMessage = validationResponse?.Message ?? "Kullanıcı doğrulama başarısız.";
-                        return View("Giris");
-                    }
-                }
-                else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-                {
-                    // Yetkisiz erişim
-                    ViewBag.ErrorMessage = "Kullanıcı adı veya şifre hatalı.";
-                    return View("Giris");
-                }
-                else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
-                {
-                    // Hatalı istek
-                    ViewBag.ErrorMessage = "Hatalı istek gönderildi. Lütfen bilgileri kontrol edin.";
-                    return View("Giris");
-                }
-                else
-                {
-                    // Genel hata durumu
-                    ViewBag.ErrorMessage = $"Sunucu hatası: {response.StatusCode}";
-                    return View("Giris");
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            // Hata durumunda kullanıcıyı bilgilendir
-            ViewBag.ErrorMessage = $"Beklenmeyen bir hata oluştu: {ex.Message}";
-            return View("Giris");
-        }
+        //                // Rolü oturumda sakla
+        //                HttpContext.Session.SetString("UserRole", userRole);
+
+        //                // Giriş başarılı, AnaSayfa/Index'e yönlendir
+        //                return RedirectToAction("Index", "AnaSayfa");
+        //            }
+        //            else
+        //            {
+        //                ViewBag.ErrorMessage = validationResponse?.Message ?? "Kullanıcı doğrulama başarısız.";
+        //                return View("Giris");
+        //            }
+        //        }
+        //        else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+        //        {
+        //            // Yetkisiz erişim
+        //            ViewBag.ErrorMessage = "Kullanıcı adı veya şifre hatalı.";
+        //            return View("Giris");
+        //        }
+        //        else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+        //        {
+        //            // Hatalı istek
+        //            ViewBag.ErrorMessage = "Hatalı istek gönderildi. Lütfen bilgileri kontrol edin.";
+        //            return View("Giris");
+        //        }
+        //        else
+        //        {
+        //            // Genel hata durumu
+        //            ViewBag.ErrorMessage = $"Sunucu hatası: {response.StatusCode}";
+        //            return View("Giris");
+        //        }
+        //    }
+        //}
+        //catch (Exception ex)
+        //{
+        //    // Hata durumunda kullanıcıyı bilgilendir
+        //    ViewBag.ErrorMessage = $"Beklenmeyen bir hata oluştu: {ex.Message}";
+        //    return View("Giris");
+        //}
     }
 
 }
