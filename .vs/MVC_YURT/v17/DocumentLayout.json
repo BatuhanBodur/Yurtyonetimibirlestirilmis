@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\batuh\\OneDrive\\Masa\u00FCst\u00FC\\Yurt-master\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C62FBCDC-7E2D-4A3B-BF08-B7F212EB00DB}|MVC_YURT.csproj|c:\\users\\batuh\\onedrive\\masa\u00FCst\u00FC\\yurt-master\\views\\anasayfa\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C62FBCDC-7E2D-4A3B-BF08-B7F212EB00DB}|MVC_YURT.csproj|solutionrelative:views\\anasayfa\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\batuh\\OneDrive\\Masa\u00FCst\u00FC\\Yurt-master\\Views\\AnaSayfa\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\AnaSayfa\\Index.cshtml",
+              "ToolTip": "C:\\Users\\batuh\\OneDrive\\Masa\u00FCst\u00FC\\Yurt-master\\Views\\AnaSayfa\\Index.cshtml",
+              "RelativeToolTip": "Views\\AnaSayfa\\Index.cshtml",
+              "ViewState": "AgIAAGAAAAAAAAAAAAAcwHMAAACdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-23T20:02:54.91Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
